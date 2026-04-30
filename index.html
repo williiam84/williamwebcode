@@ -170,15 +170,32 @@
 
     <!-- Avaliações -->
     <section class="avaliacoes" id="avaliacoes">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <span>Feedback</span>
-                <h2>O que dizem sobre meu trabalho</h2>
-            </div>
+    <div class="container">
 
-            <div class="avaliacoes-grid" id="avaliacoesContainer"></div>
+        <div class="section-title" data-aos="fade-up">
+            <span>Feedback</span>
+            <h2>O que dizem sobre meu trabalho</h2>
         </div>
-    </section>
+
+        <!-- Formulário para enviar avaliação -->
+        <div class="avaliacao-form-box" data-aos="fade-up">
+            <form id="avaliacaoForm" class="avaliacao-form">
+                <input type="text" id="nome" placeholder="Seu nome" required>
+
+                <textarea id="comentario" placeholder="Escreva sua avaliação..." required></textarea>
+
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+
+        <!-- Avaliações carregadas -->
+        <div class="avaliacoes-grid" id="avaliacoesContainer">
+            <!-- Cards serão adicionados aqui -->
+        </div>
+
+    </div>
+</section>
+
 
     <!-- Contato -->
     <section class="contato" id="contato">
@@ -257,33 +274,137 @@
     </section>
 </body>
 <script>
+const API_URL = "https://apisistemadeavaliacao.onrender.com/avaliacoes";
+
+// ===============================
+// CARREGAR AVALIAÇÕES
+// ===============================
 async function carregarAvaliacoes() {
+    const container = document.getElementById("avaliacoesContainer");
+
+    if (!container) return;
+
     try {
-        const response = await fetch('https://apisistemadeavaliacao.onrender.com/avaliacoes');
+        container.innerHTML = `
+            <div class="loading-avaliacoes">
+                Carregando avaliações...
+            </div>
+        `;
+
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("Erro ao buscar avaliações");
+        }
+
         const avaliacoes = await response.json();
 
-        const container = document.getElementById('avaliacoesContainer');
+        container.innerHTML = "";
 
-        container.innerHTML = '';
+        // Caso não tenha avaliações
+        if (!avaliacoes || avaliacoes.length === 0) {
+            container.innerHTML = `
+                <div class="avaliacao-card">
+                    <h3>Ainda não há avaliações</h3>
+                    <p>Seja o primeiro a enviar um feedback.</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Mostrar mais recentes primeiro
+        avaliacoes.reverse();
 
         avaliacoes.forEach(avaliacao => {
-            const card = document.createElement('div');
-            card.classList.add('avaliacao-card');
+            const card = document.createElement("div");
+            card.className = "avaliacao-card";
 
             card.innerHTML = `
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h3>${avaliacao.nome || 'Cliente'}</h3>
-                <p>${avaliacao.comentario || 'Sem comentário'}</p>
+                <div class="stars">★★★★★</div>
+                <h3>${avaliacao.nome ? escapeHTML(avaliacao.nome) : "Cliente"}</h3>
+                <p>${avaliacao.comentario ? escapeHTML(avaliacao.comentario) : "Sem comentário"}</p>
             `;
 
             container.appendChild(card);
         });
 
     } catch (error) {
-        console.error('Erro ao carregar avaliações:', error);
+        console.error("Erro ao carregar avaliações:", error);
+
+        container.innerHTML = `
+            <div class="avaliacao-card">
+                <h3>Erro ao carregar</h3>
+                <p>Não foi possível buscar as avaliações.</p>
+            </div>
+        `;
     }
 }
 
-carregarAvaliacoes();
+// ===============================
+// ENVIAR AVALIAÇÃO
+// ===============================
+async function enviarAvaliacao(event) {
+    event.preventDefault();
+
+    const nomeInput = document.getElementById("nome");
+    const comentarioInput = document.getElementById("comentario");
+
+    if (!nomeInput || !comentarioInput) return;
+
+    const nome = nomeInput.value.trim();
+    const comentario = comentarioInput.value.trim();
+
+    if (!nome || !comentario) {
+        alert("Preencha todos os campos.");
+        return;
+    }
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome: nome,
+                comentario: comentario
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao enviar avaliação");
+        }
+
+        document.getElementById("avaliacaoForm").reset();
+
+        carregarAvaliacoes();
+
+    } catch (error) {
+        console.error("Erro ao enviar avaliação:", error);
+        alert("Erro ao enviar avaliação.");
+    }
+}
+
+// ===============================
+// SEGURANÇA HTML
+// ===============================
+function escapeHTML(text) {
+    const div = document.createElement("div");
+    div.innerText = text;
+    return div.innerHTML;
+}
+
+// ===============================
+// INICIAR
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    carregarAvaliacoes();
+
+    const form = document.getElementById("avaliacaoForm");
+
+    if (form) {
+        form.addEventListener("submit", enviarAvaliacao);
+    }
+});
 </script>
 
