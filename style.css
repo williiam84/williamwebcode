@@ -793,3 +793,52 @@ textarea {
 .sobre-grid {
     overflow: hidden;
 }
+/* ===== CORREÇÃO DA ROLAGEM SEM EMPURRAR PRA ESQUERDA ===== */
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    position: relative;
+}
+
+/* Container centralizado */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Evita overflow sem quebrar alinhamento */
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Corrige grids */
+.services-grid,
+.portfolio-grid,
+.avaliacoes-grid,
+.sobre-grid {
+    width: 100%;
+}
+
+/* Corrige hero */
+.hero {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Evita elementos passando da tela */
+.service-card,
+.portfolio-card,
+.avaliacao-card,
+.stat-card {
+    min-width: 0;
+}
