@@ -467,3 +467,168 @@ footer {
         padding: 90px 0;
     }
 }
+/* ================= RESPONSIVO EXTRA ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+        padding: 150px 6% 90px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-image img {
+        max-width: 450px;
+    }
+
+    .sobre-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .section-title h2 {
+        font-size: 2.4rem;
+    }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .btn-navbar {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding: 140px 5% 80px;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+    }
+
+    .services-grid,
+    .portfolio-grid,
+    .avaliacoes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card,
+    .portfolio-card,
+    .avaliacao-card {
+        padding: 25px;
+    }
+
+    .portfolio-card img {
+        height: 220px;
+    }
+
+    .contact-form,
+    .avaliacao-form-box {
+        width: 100%;
+    }
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero {
+        padding: 130px 5% 70px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-navbar,
+    .contact-form button,
+    .avaliacao-form button {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 7px 14px;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .service-card,
+    .portfolio-info,
+    .avaliacao-card {
+        padding: 22px;
+    }
+
+    .portfolio-card img {
+        height: 200px;
+    }
+
+    .stat-card {
+        min-width: 100%;
+    }
+
+    footer {
+        font-size: 0.9rem;
+        padding: 30px 20px;
+    }
+}
