@@ -1,46 +1,50 @@
-// ================= MODAL =================
-function abrirFormulario() {
-    document.getElementById("formModal").classList.add("active");
-}
+// ============================
+// MODAL
+// ============================
+const modal = document.getElementById("formModal");
 
-function fecharFormulario() {
-    document.getElementById("formModal").classList.remove("active");
-}
+// Adicionado ao escopo global para garantir que os botões com onclick="abrirFormulario()" funcionem
+window.abrirFormulario = function() {
+    if (modal) modal.classList.add("active");
+};
+
+window.fecharFormulario = function() {
+    if (modal) modal.classList.remove("active");
+};
 
 // Fechar modal clicando fora
-window.addEventListener("click", function (e) {
-    const modal = document.getElementById("formModal");
-
+window.addEventListener("click", (e) => {
     if (e.target === modal) {
         fecharFormulario();
     }
 });
 
-// ================= WHATSAPP =================
+// ============================
+// WHATSAPP
+// ============================
 function enviarWhatsApp() {
-    const nome = document.getElementById("nome").value;
-    const modalidade = document.getElementById("modalidade").value;
-    const tipo = document.getElementById("tipo").value;
-    const produto = document.getElementById("produto").value;
-    const publico = document.getElementById("publico").value;
-    const descricao = document.getElementById("descricao").value;
-    const prazo = document.getElementById("prazo").value;
+    // Usando querySelector para ser mais resiliente
+    const nome = document.getElementById("nome")?.value.trim();
+    const modalidade = document.getElementById("modalidade")?.value.trim();
+    const tipo = document.getElementById("tipo")?.value.trim();
+    const produto = document.getElementById("produto")?.value.trim();
+    const publico = document.getElementById("publico")?.value.trim();
+    const descricao = document.getElementById("descricao")?.value.trim();
+    const prazo = document.getElementById("prazo")?.value.trim();
 
     if (!nome || !tipo) {
-        alert("Preencha pelo menos nome e tipo de site.");
+        alert("Preencha pelo menos o Nome e o Tipo de Site.");
         return;
     }
 
-    const mensagem = `
-Olá, meu nome é ${nome}
+    const mensagem = `Olá, meu nome é ${nome}
 
-Área: ${modalidade}
-Tipo de site: ${tipo}
-Produto/Serviço: ${produto}
-Público-alvo: ${publico}
-Descrição: ${descricao}
-Prazo: ${prazo}
-    `;
+*Área:* ${modalidade || 'Não informada'}
+*Tipo de site:* ${tipo}
+*Produto/Serviço:* ${produto || 'Não informado'}
+*Público-alvo:* ${publico || 'Não informado'}
+*Descrição:* ${descricao || 'Sem descrição'}
+*Prazo:* ${prazo || 'Não informado'}`;
 
     const numero = "5527997230221";
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
@@ -48,23 +52,26 @@ Prazo: ${prazo}
     window.open(url, "_blank");
 }
 
-// ================= CONTADORES =================
-const counters = document.querySelectorAll(".contador");
-
+// ============================
+// CONTADORES (Melhorado)
+// ============================
 function iniciarContadores() {
+    const counters = document.querySelectorAll(".contador");
+
     counters.forEach(counter => {
-        const target = +counter.getAttribute("data-target");
+        const target = +counter.dataset.target;
         let current = 0;
+        
+        // Ajuste de velocidade baseado no alvo para não demorar demais em números grandes
+        const increment = target / 50; 
 
         const updateCounter = () => {
-            const increment = target / 80;
-
+            current += increment;
             if (current < target) {
-                current += increment;
                 counter.innerText = Math.ceil(current);
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.innerText = target;
+                counter.innerText = target; // Garante que termine no número exato
             }
         };
 
@@ -72,71 +79,85 @@ function iniciarContadores() {
     });
 }
 
-iniciarContadores();
+// ============================
+// REVEAL SCROLL & HEADER (Otimizados)
+// ============================
+function handleScrollEffects() {
+    // Efeito Header
+    const header = document.querySelector(".header");
+    if (header) {
+        header.classList.toggle("header-scroll", window.scrollY > 50);
+    }
 
-// ================= REVEAL SCROLL =================
-function revealOnScroll() {
+    // Reveal on Scroll
     const reveals = document.querySelectorAll(".reveal");
-
     reveals.forEach(element => {
         const windowHeight = window.innerHeight;
         const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 100;
 
-        if (elementTop < windowHeight - 100) {
+        if (elementTop < windowHeight - revealPoint) {
             element.classList.add("active");
         }
     });
 }
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+// ============================
+// AVALIAÇÕES
+// ============================
+function iniciarAvaliacoes() {
+    const publicarBtn = document.getElementById("publicarAvaliacao");
+    const textarea = document.getElementById("textoAvaliacao");
+    const listaAvaliacoes = document.getElementById("listaAvaliacoes");
 
-// ================= HEADER SCROLL =================
-window.addEventListener("scroll", () => {
-    const header = document.querySelector(".header");
+    if (!publicarBtn || !textarea || !listaAvaliacoes) return;
 
-    if (window.scrollY > 50) {
-        header.classList.add("header-scroll");
-    } else {
-        header.classList.remove("header-scroll");
-    }
-});
-
-// ================= AVALIAÇÕES =================
-const publicarBtn = document.getElementById("publicarAvaliacao");
-const textarea = document.getElementById("textoAvaliacao");
-const listaAvaliacoes = document.getElementById("listaAvaliacoes");
-
-if (publicarBtn) {
-    publicarBtn.addEventListener("click", () => {
+    publicarBtn.onclick = () => {
         const texto = textarea.value.trim();
 
-        if (texto === "") return;
+        if (texto === "") {
+            alert("Por favor, digite sua avaliação.");
+            return;
+        }
 
         const novaAvaliacao = document.createElement("div");
-        novaAvaliacao.classList.add("avaliacao-item");
-
-        novaAvaliacao.innerHTML = `
-            <p>${texto}</p>
-        `;
+        novaAvaliacao.className = "avaliacao-item";
+        novaAvaliacao.innerHTML = `<p>${texto}</p>`;
 
         listaAvaliacoes.prepend(novaAvaliacao);
-
         textarea.value = "";
+    };
+}
+
+// ============================
+// SCROLL SUAVE
+// ============================
+function iniciarScrollSuave() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const id = this.getAttribute('href');
+            if (id === '#') return;
+            
+            const target = document.querySelector(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 }
 
-// ================= SCROLL SUAVE =================
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const destino = document.querySelector(this.getAttribute("href"));
-
-        if (destino) {
-            destino.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-    });
+// ============================
+// INICIALIZAÇÃO ÚNICA
+// ============================
+document.addEventListener("DOMContentLoaded", () => {
+    iniciarContadores();
+    iniciarAvaliacoes();
+    iniciarScrollSuave();
+    handleScrollEffects(); // Roda uma vez no load
 });
+
+// Listener de scroll unificado para melhor performance
+window.addEventListener("scroll", handleScrollEffects);
