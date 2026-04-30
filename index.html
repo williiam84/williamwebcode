@@ -1,4 +1,5 @@
 
+<!-- ===================== index.html ===================== -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,270 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>William Web Code | Criação de Sites Profissionais</title>
-  <style>
-    /* =========================
-   MELHORIAS VISUAIS EXTRAS
-========================= */
 
-/* Scroll suave */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Seleção de texto */
-::selection {
-  background: rgba(0, 198, 255, 0.35);
-  color: white;
-}
-
-/* Scrollbar personalizada */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #060914;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--primary), var(--secondary));
-  border-radius: 20px;
-}
-
-/* Glow leve nas sections */
-section {
-  position: relative;
-}
-
-section::after {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0,198,255,0.05), transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Header mais premium */
-.header {
-  transition: 0.3s ease;
-}
-
-.header:hover {
-  backdrop-filter: blur(18px);
-}
-
-/* Logo efeito */
-.logo-img {
-  transition: 0.4s ease;
-}
-
-.logo-img:hover {
-  transform: rotate(-5deg) scale(1.08);
-}
-
-/* Hero com destaque */
-.hero-content {
-  position: relative;
-}
-
-.hero-content::before {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0,255,179,0.08), transparent 70%);
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
-}
-
-/* Botões mais vivos */
-.btn-principal,
-.btn-header,
-.btn-enviar,
-.btn-publicar,
-.cta button,
-.contato button {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-principal::before,
-.btn-header::before,
-.btn-enviar::before,
-.btn-publicar::before,
-.cta button::before,
-.contato button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 120%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.25),
-    transparent
-  );
-  transition: 0.6s;
-}
-
-.btn-principal:hover::before,
-.btn-header:hover::before,
-.btn-enviar:hover::before,
-.btn-publicar:hover::before,
-.cta button:hover::before,
-.contato button:hover::before {
-  left: 120%;
-}
-
-/* Cards premium */
-.card,
-.beneficio-card,
-.passo,
-.sobre-box,
-.resultado-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before,
-.beneficio-card::before,
-.passo::before,
-.resultado-card::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255,255,255,0.04),
-    transparent
-  );
-  top: -100%;
-  left: -100%;
-  transition: 0.8s;
-}
-
-.card:hover::before,
-.beneficio-card:hover::before,
-.passo:hover::before,
-.resultado-card:hover::before {
-  top: 100%;
-  left: 100%;
-}
-
-/* Inputs mais modernos */
-input,
-textarea {
-  transition: 0.3s ease;
-}
-
-input:hover,
-textarea:hover {
-  border-color: rgba(0,255,179,0.25);
-}
-
-/* Footer elegante */
-footer {
-  position: relative;
-}
-
-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0,255,179,0.4),
-    transparent
-  );
-}
-
-/* Fade nas imagens */
-img {
-  transition: 0.3s ease;
-}
-
-img:hover {
-  filter: brightness(1.05);
-}
-
-/* Animação suave */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* Ícones animados */
-.card i,
-.beneficio-card i,
-.passo i {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* Hero Stats melhor */
-.hero-stats div {
-  transition: 0.3s ease;
-}
-
-.hero-stats div:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0,255,179,0.25);
-}
-
-/* Modal premium */
-.modal-content {
-  box-shadow:
-    0 0 50px rgba(0,198,255,0.15),
-    0 0 100px rgba(0,255,179,0.06);
-}
-
-/* CTA mais forte */
-.cta {
-  position: relative;
-  overflow: hidden;
-}
-
-.cta::before {
-  content: "";
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(0,255,179,0.08), transparent);
-  top: -300px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-  </style>
-
-  <meta name="description" content="Criação de sites profissionais, landing pages e sistemas web para empresas e negócios locais.">
-  <meta name="keywords" content="criação de sites, desenvolvimento web, landing pages, sites profissionais, sistemas web">
+  <meta name="description" content="Criação de sites profissionais, landing pages e sistemas web para empresas.">
+  <meta name="keywords" content="criação de sites, desenvolvimento web, landing pages, sites profissionais">
   <meta name="author" content="William Web Code">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -278,305 +19,276 @@ img:hover {
 <body>
 
 <header class="header">
-  <div class="container header-container">
-
-    <div class="logo-area">
-      <img src="logowilliam-removebg-preview.png" alt="Logo William Web Code" class="logo-img">
-      <span class="logo-text">William Web Code</span>
-    </div>
-
-    <nav class="menu">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#beneficios">Benefícios</a>
-      <a href="#avaliacoes">Avaliações</a>
-      <a href="#contato">Contato</a>
-    </nav>
-
-    <button class="btn-header" onclick="abrirFormulario()">
-      Solicitar Site
-    </button>
-
+  <div class="logo-area">
+    <img src="logowilliam-removebg-preview.png" alt="Logo William Web Code" class="logo-img">
+    <span class="logo-text">William Web Code</span>
   </div>
+
+  <nav class="menu">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <button class="btn-header" onclick="abrirFormulario()">
+    Solicitar seu site
+  </button>
 </header>
 
 <main>
 
-  <!-- HERO -->
-  <section class="hero reveal" id="inicio">
-    <div class="container hero-content">
+<section class="hero reveal" id="inicio">
+  <div class="hero-content">
 
-      <span class="tag">Sites modernos para empresas</span>
+    <span class="tag">Sites profissionais e modernos</span>
 
-      <h1>
-        Criação de Sites Profissionais
-        para Fazer seu Negócio Crescer
-      </h1>
+    <h1>
+      Criação de Sites Profissionais<br>
+      que Geram Clientes
+    </h1>
+
+    <p>
+      Desenvolvo sites rápidos, modernos e focados em conversão para ajudar sua empresa a crescer.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn-principal" onclick="abrirFormulario()">
+        Solicitar seu site
+      </button>
+
+      <a href="#servicos" class="btn-secundario">
+        Ver serviços
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <h3>+50</h3>
+        <span>Sites criados</span>
+      </div>
+
+      <div>
+        <h3>+100%</h3>
+        <span>Mais clientes</span>
+      </div>
+
+      <div>
+        <h3>24h</h3>
+        <span>Suporte</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="sobre" class="sobre reveal">
+  <div class="container-sobre">
+
+    <div class="sobre-texto">
+      <h2>Sobre a William Web Code</h2>
 
       <p>
-        Sites rápidos, modernos e focados em conversão para atrair clientes e gerar resultados.
+        Desenvolvemos sites modernos, rápidos e personalizados para empresas e profissionais.
       </p>
 
-      <div class="hero-buttons">
-        <button class="btn-principal" onclick="abrirFormulario()">
-          Solicitar Meu Site
-        </button>
+      <ul>
+        <li>Sites rápidos e responsivos</li>
+        <li>Design profissional</li>
+        <li>Foco em conversão</li>
+        <li>Suporte contínuo</li>
+      </ul>
+    </div>
 
-        <a href="#servicos" class="btn-secundario">
-          Ver Serviços
-        </a>
+    <div class="sobre-box">
+      <h3>Por que escolher?</h3>
+
+      <div class="sobre-card">
+        <strong>Qualidade</strong>
+        <p>Projetos feitos com atenção aos detalhes.</p>
       </div>
 
-      <div class="hero-stats">
-        <div class="stat-item">
-          <h3>+50</h3>
-          <span>Sites Criados</span>
-        </div>
+      <div class="sobre-card">
+        <strong>Resultado</strong>
+        <p>Sites feitos para gerar clientes.</p>
+      </div>
 
-        <div class="stat-item">
-          <h3>+100%</h3>
-          <span>Mais Clientes</span>
-        </div>
+      <div class="sobre-card">
+        <strong>Suporte</strong>
+        <p>Ajuda rápida sempre que precisar.</p>
+      </div>
+    </div>
 
-        <div class="stat-item">
-          <h3>24h</h3>
-          <span>Suporte</span>
-        </div>
+  </div>
+</section>
+
+<section id="servicos" class="servicos reveal">
+  <div class="container">
+
+    <h2>Serviços</h2>
+    <p class="subtitulo">Soluções completas para o seu negócio</p>
+
+    <div class="cards">
+
+      <article class="card">
+        <i class="fa-solid fa-code"></i>
+        <h3>Criação de Sites</h3>
+        <p>Sites modernos e profissionais.</p>
+      </article>
+
+      <article class="card">
+        <i class="fa-solid fa-bullseye"></i>
+        <h3>Landing Pages</h3>
+        <p>Páginas focadas em conversão.</p>
+      </article>
+
+      <article class="card">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Sistemas Web</h3>
+        <p>Soluções personalizadas.</p>
+      </article>
+
+      <article class="card">
+        <i class="fa-solid fa-store"></i>
+        <h3>Negócios Locais</h3>
+        <p>Sites para atrair clientes locais.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="beneficios reveal">
+  <div class="container">
+
+    <h2>Benefícios</h2>
+
+    <div class="beneficios-grid">
+
+      <div class="beneficio-card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Alta Performance</h3>
+        <p>Sites rápidos e otimizados.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <h3>Responsivo</h3>
+        <p>Funciona em celular, tablet e PC.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <i class="fa-solid fa-headset"></i>
+        <h3>Suporte</h3>
+        <p>Ajuda sempre que precisar.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <i class="fa-brands fa-whatsapp"></i>
+        <h3>WhatsApp</h3>
+        <p>Contato direto com clientes.</p>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="sobre reveal">
-    <div class="container container-sobre">
+<section class="processo reveal" id="faq">
+  <div class="container">
 
-      <div class="sobre-texto">
-        <span class="section-tag">Sobre</span>
+    <h2>Como Funciona</h2>
 
-        <h2>Sobre a William Web Code</h2>
+    <div class="processo-grid">
 
-        <p>
-          Desenvolvemos sites modernos, rápidos e personalizados para empresas, profissionais e negócios locais.
-        </p>
-
-        <p>
-          Cada projeto é pensado para oferecer boa experiência ao usuário, design profissional e foco em conversão.
-        </p>
-
-        <ul>
-          <li>✔ Sites responsivos</li>
-          <li>✔ Visual moderno</li>
-          <li>✔ Integração com WhatsApp</li>
-          <li>✔ Suporte rápido</li>
-        </ul>
+      <div class="passo">
+        <i class="fa-solid fa-paper-plane"></i>
+        <h3>Pedido</h3>
+        <p>Você envia as informações.</p>
       </div>
 
-      <div class="sobre-box">
-        <h3>Por que escolher?</h3>
+      <div class="passo">
+        <i class="fa-solid fa-code"></i>
+        <h3>Desenvolvimento</h3>
+        <p>Criamos o projeto com foco em resultado.</p>
+      </div>
 
-        <div class="sobre-card">
-          <strong>Design Profissional</strong>
-          <p>Visual moderno para destacar sua empresa.</p>
-        </div>
-
-        <div class="sobre-card">
-          <strong>Resultados</strong>
-          <p>Sites feitos para gerar contatos e vendas.</p>
-        </div>
-
-        <div class="sobre-card">
-          <strong>Suporte</strong>
-          <p>Atendimento rápido quando precisar.</p>
-        </div>
+      <div class="passo">
+        <i class="fa-solid fa-rocket"></i>
+        <h3>Entrega</h3>
+        <p>Seu site pronto para vender.</p>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos" class="servicos reveal">
-    <div class="container">
+<section id="avaliacoes" class="avaliacoes reveal">
+  <div class="container">
 
-      <span class="section-tag">Serviços</span>
-      <h2>O Que Eu Posso Criar</h2>
-      <p class="subtitulo">Soluções profissionais para sua empresa</p>
+    <h2>Avaliações</h2>
+    <p class="subtitulo">Deixe sua opinião sobre o serviço</p>
 
-      <div class="cards">
+    <div class="avaliacao-box">
 
-        <article class="card">
-          <i class="fa-solid fa-code"></i>
-          <h3>Criação de Sites</h3>
-          <p>Sites modernos, rápidos e responsivos.</p>
-        </article>
+      <textarea placeholder="Escreva sua avaliação aqui..."></textarea>
 
-        <article class="card">
-          <i class="fa-solid fa-bullseye"></i>
-          <h3>Landing Pages</h3>
-          <p>Páginas focadas em conversão e vendas.</p>
-        </article>
-
-        <article class="card">
-          <i class="fa-solid fa-laptop-code"></i>
-          <h3>Sistemas Web</h3>
-          <p>Soluções personalizadas para seu negócio.</p>
-        </article>
-
-        <article class="card">
-          <i class="fa-solid fa-store"></i>
-          <h3>Negócios Locais</h3>
-          <p>Sites para atrair clientes da região.</p>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BENEFÍCIOS -->
-  <section id="beneficios" class="beneficios reveal">
-    <div class="container">
-
-      <span class="section-tag">Benefícios</span>
-      <h2>Por Que Ter um Site Profissional?</h2>
-
-      <div class="beneficios-grid">
-
-        <div class="beneficio-card">
-          <i class="fa-solid fa-bolt"></i>
-          <h3>Alta Performance</h3>
-          <p>Carregamento rápido e experiência melhor.</p>
-        </div>
-
-        <div class="beneficio-card">
-          <i class="fa-solid fa-mobile-screen-button"></i>
-          <h3>Responsivo</h3>
-          <p>Perfeito em celular, tablet e desktop.</p>
-        </div>
-
-        <div class="beneficio-card">
-          <i class="fa-solid fa-headset"></i>
-          <h3>Suporte</h3>
-          <p>Ajuda sempre que você precisar.</p>
-        </div>
-
-        <div class="beneficio-card">
-          <i class="fa-brands fa-whatsapp"></i>
-          <h3>WhatsApp</h3>
-          <p>Receba contatos diretamente.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROCESSO -->
-  <section class="processo reveal" id="faq">
-    <div class="container">
-
-      <span class="section-tag">Processo</span>
-      <h2>Como Funciona</h2>
-
-      <div class="processo-grid">
-
-        <div class="passo">
-          <i class="fa-solid fa-paper-plane"></i>
-          <h3>Pedido</h3>
-          <p>Você envia suas informações.</p>
-        </div>
-
-        <div class="passo">
-          <i class="fa-solid fa-code"></i>
-          <h3>Desenvolvimento</h3>
-          <p>O projeto é criado com foco em resultados.</p>
-        </div>
-
-        <div class="passo">
-          <i class="fa-solid fa-rocket"></i>
-          <h3>Entrega</h3>
-          <p>Seu site pronto para vender.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- AVALIAÇÕES -->
-  <section id="avaliacoes" class="avaliacoes reveal">
-    <div class="container">
-
-      <span class="section-tag">Avaliações</span>
-      <h2>Deixe Sua Opinião</h2>
-      <p class="subtitulo">Compartilhe sua experiência</p>
-
-      <div class="avaliacao-box">
-
-        <textarea id="textoAvaliacao" placeholder="Escreva sua avaliação..."></textarea>
-
-        <button id="publicarAvaliacao" class="btn-publicar">
-          Publicar Avaliação
-        </button>
-
-      </div>
-
-      <div id="listaAvaliacoes" class="lista-avaliacoes"></div>
-
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta reveal">
-    <div class="container">
-
-      <h2>Pronto Para Ter Seu Site?</h2>
-      <p>Solicite agora e comece a crescer online.</p>
-
-      <button onclick="abrirFormulario()">
-        Solicitar Agora
+      <button class="btn-publicar">
+        Publicar Avaliação
       </button>
 
     </div>
-  </section>
 
-  <!-- CONTATO -->
-  <section class="contato reveal" id="contato">
-    <div class="container">
+    <div class="lista-avaliacoes">
+      <!-- avaliações serão adicionadas aqui -->
+    </div>
 
-      <span class="section-tag">Contato</span>
-      <h2>Fale Comigo</h2>
+  </div>
+</section>
 
-      <p>
-        Entre em contato e transforme sua ideia em um projeto profissional.
-      </p>
+<section class="cta reveal">
+  <div class="container">
+    <h2>Pronto para ter seu site profissional?</h2>
+    <p>Solicite agora e atraia mais clientes.</p>
 
-      <div class="contato-botoes">
+    <button onclick="abrirFormulario()">
+      Solicitar Agora
+    </button>
+  </div>
+</section>
 
-        <button onclick="abrirFormulario()">
-          <i class="fa-brands fa-whatsapp"></i>
-          WhatsApp
-        </button>
+<section class="contato reveal" id="contato">
+  <div class="container">
 
-        <button onclick="abrirFormulario()">
-          <i class="fa-solid fa-envelope"></i>
-          Solicitar Projeto
-        </button>
+    <h2>Fale Comigo</h2>
 
-      </div>
+    <p>
+      Entre em contato e transforme sua ideia em um site profissional.
+    </p>
+
+    <div class="contato-botoes">
+
+      <button onclick="abrirFormulario()">
+        <i class="fa-brands fa-whatsapp"></i>
+        WhatsApp
+      </button>
+
+      <button onclick="abrirFormulario()">
+        <i class="fa-solid fa-envelope"></i>
+        Solicitar Projeto
+      </button>
 
     </div>
-  </section>
 
-</main>
+  </div>
+</section>
 
 <footer>
   <div class="container footer-content">
 
     <div class="footer-logo">
       <h3>William Web Code</h3>
-      <p>Sites modernos que geram resultados.</p>
+      <p>Sites modernos que geram resultados</p>
     </div>
 
     <div class="footer-links">
@@ -599,61 +311,6 @@ img:hover {
     <p>© 2026 William Web Code — Todos os direitos reservados</p>
   </div>
 </footer>
-
-<!-- MODAL -->
-<div id="formModal" class="modal">
-
-  <div class="modal-content">
-
-    <span class="close" onclick="fecharFormulario()">&times;</span>
-
-    <h2>Solicitar Projeto</h2>
-
-    <div class="form-grid">
-
-      <div class="input-group">
-        <label>Nome</label>
-        <input id="nome" type="text" placeholder="Seu nome">
-      </div>
-
-      <div class="input-group">
-        <label>Área</label>
-        <input id="modalidade" type="text" placeholder="Seu negócio">
-      </div>
-
-      <div class="input-group">
-        <label>Tipo de Site</label>
-        <input id="tipo" type="text" placeholder="Site, landing page, sistema">
-      </div>
-
-      <div class="input-group">
-        <label>Produto ou Serviço</label>
-        <input id="produto" type="text" placeholder="O que você vende">
-      </div>
-
-      <div class="input-group full">
-        <label>Descrição</label>
-        <textarea id="descricao" placeholder="Descreva seu projeto"></textarea>
-      </div>
-
-      <div class="input-group">
-        <label>Prazo</label>
-        <input id="prazo" type="text" placeholder="Ex: 7 dias">
-      </div>
-
-    </div>
-
-    <button class="btn-enviar" onclick="enviarWhatsApp()">
-      Enviar para WhatsApp
-    </button>
-
-  </div>
-
-</div>
-
-<a class="whatsapp-fixo" onclick="abrirFormulario()">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
 
 <script src="script.js"></script>
 
