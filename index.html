@@ -6,6 +6,262 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>William Web Code | Criação de Sites Profissionais</title>
+  <style>
+    /* =========================
+   MELHORIAS VISUAIS EXTRAS
+========================= */
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Seleção de texto */
+::selection {
+  background: rgba(0, 198, 255, 0.35);
+  color: white;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060914;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--secondary));
+  border-radius: 20px;
+}
+
+/* Glow leve nas sections */
+section {
+  position: relative;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,198,255,0.05), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Header mais premium */
+.header {
+  transition: 0.3s ease;
+}
+
+.header:hover {
+  backdrop-filter: blur(18px);
+}
+
+/* Logo efeito */
+.logo-img {
+  transition: 0.4s ease;
+}
+
+.logo-img:hover {
+  transform: rotate(-5deg) scale(1.08);
+}
+
+/* Hero com destaque */
+.hero-content {
+  position: relative;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,255,179,0.08), transparent 70%);
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+/* Botões mais vivos */
+.btn-principal,
+.btn-header,
+.btn-enviar,
+.btn-publicar,
+.cta button,
+.contato button {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-principal::before,
+.btn-header::before,
+.btn-enviar::before,
+.btn-publicar::before,
+.cta button::before,
+.contato button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.btn-principal:hover::before,
+.btn-header:hover::before,
+.btn-enviar:hover::before,
+.btn-publicar:hover::before,
+.cta button:hover::before,
+.contato button:hover::before {
+  left: 120%;
+}
+
+/* Cards premium */
+.card,
+.beneficio-card,
+.passo,
+.sobre-box,
+.resultado-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before,
+.beneficio-card::before,
+.passo::before,
+.resultado-card::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255,255,255,0.04),
+    transparent
+  );
+  top: -100%;
+  left: -100%;
+  transition: 0.8s;
+}
+
+.card:hover::before,
+.beneficio-card:hover::before,
+.passo:hover::before,
+.resultado-card:hover::before {
+  top: 100%;
+  left: 100%;
+}
+
+/* Inputs mais modernos */
+input,
+textarea {
+  transition: 0.3s ease;
+}
+
+input:hover,
+textarea:hover {
+  border-color: rgba(0,255,179,0.25);
+}
+
+/* Footer elegante */
+footer {
+  position: relative;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0,255,179,0.4),
+    transparent
+  );
+}
+
+/* Fade nas imagens */
+img {
+  transition: 0.3s ease;
+}
+
+img:hover {
+  filter: brightness(1.05);
+}
+
+/* Animação suave */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Ícones animados */
+.card i,
+.beneficio-card i,
+.passo i {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Hero Stats melhor */
+.hero-stats div {
+  transition: 0.3s ease;
+}
+
+.hero-stats div:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,255,179,0.25);
+}
+
+/* Modal premium */
+.modal-content {
+  box-shadow:
+    0 0 50px rgba(0,198,255,0.15),
+    0 0 100px rgba(0,255,179,0.06);
+}
+
+/* CTA mais forte */
+.cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0,255,179,0.08), transparent);
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+  </style>
 
   <meta name="description" content="Criação de sites profissionais, landing pages e sistemas web para empresas e negócios locais.">
   <meta name="keywords" content="criação de sites, desenvolvimento web, landing pages, sites profissionais, sistemas web">
