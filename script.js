@@ -3,12 +3,11 @@
 // ============================
 const modal = document.getElementById("formModal");
 
-// Adicionado ao escopo global para garantir que os botões com onclick="abrirFormulario()" funcionem
-window.abrirFormulario = function() {
+window.abrirFormulario = function () {
     if (modal) modal.classList.add("active");
 };
 
-window.fecharFormulario = function() {
+window.fecharFormulario = function () {
     if (modal) modal.classList.remove("active");
 };
 
@@ -22,8 +21,7 @@ window.addEventListener("click", (e) => {
 // ============================
 // WHATSAPP
 // ============================
-function enviarWhatsApp() {
-    // Usando querySelector para ser mais resiliente
+window.enviarWhatsApp = function () {
     const nome = document.getElementById("nome")?.value.trim();
     const modalidade = document.getElementById("modalidade")?.value.trim();
     const tipo = document.getElementById("tipo")?.value.trim();
@@ -33,27 +31,33 @@ function enviarWhatsApp() {
     const prazo = document.getElementById("prazo")?.value.trim();
 
     if (!nome || !tipo) {
-        alert("Preencha pelo menos o Nome e o Tipo de Site.");
+        alert("Preencha Nome e Tipo de Site.");
         return;
     }
 
     const mensagem = `Olá, meu nome é ${nome}
 
-*Área:* ${modalidade || 'Não informada'}
-*Tipo de site:* ${tipo}
-*Produto/Serviço:* ${produto || 'Não informado'}
-*Público-alvo:* ${publico || 'Não informado'}
-*Descrição:* ${descricao || 'Sem descrição'}
-*Prazo:* ${prazo || 'Não informado'}`;
+Área: ${modalidade || "Não informada"}
+Tipo de site: ${tipo}
+Produto/Serviço: ${produto || "Não informado"}
+Público-alvo: ${publico || "Não informado"}
+Descrição: ${descricao || "Sem descrição"}
+Prazo: ${prazo || "Não informado"}`;
 
     const numero = "5527997230221";
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-    window.open(url, "_blank");
-}
+    // Redireciona corretamente para WhatsApp
+    const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagem)}`;
+
+    // Fecha modal
+    fecharFormulario();
+
+    // Abre WhatsApp
+    window.location.href = url;
+};
 
 // ============================
-// CONTADORES (Melhorado)
+// CONTADORES
 // ============================
 function iniciarContadores() {
     const counters = document.querySelectorAll(".contador");
@@ -61,17 +65,16 @@ function iniciarContadores() {
     counters.forEach(counter => {
         const target = +counter.dataset.target;
         let current = 0;
-        
-        // Ajuste de velocidade baseado no alvo para não demorar demais em números grandes
-        const increment = target / 50; 
+        const increment = target / 50;
 
         const updateCounter = () => {
             current += increment;
+
             if (current < target) {
                 counter.innerText = Math.ceil(current);
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.innerText = target; // Garante que termine no número exato
+                counter.innerText = target;
             }
         };
 
@@ -80,23 +83,22 @@ function iniciarContadores() {
 }
 
 // ============================
-// REVEAL SCROLL & HEADER (Otimizados)
+// SCROLL + HEADER
 // ============================
 function handleScrollEffects() {
-    // Efeito Header
     const header = document.querySelector(".header");
+
     if (header) {
         header.classList.toggle("header-scroll", window.scrollY > 50);
     }
 
-    // Reveal on Scroll
     const reveals = document.querySelectorAll(".reveal");
+
     reveals.forEach(element => {
         const windowHeight = window.innerHeight;
         const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 100;
 
-        if (elementTop < windowHeight - revealPoint) {
+        if (elementTop < windowHeight - 100) {
             element.classList.add("active");
         }
     });
@@ -115,8 +117,8 @@ function iniciarAvaliacoes() {
     publicarBtn.onclick = () => {
         const texto = textarea.value.trim();
 
-        if (texto === "") {
-            alert("Por favor, digite sua avaliação.");
+        if (!texto) {
+            alert("Digite sua avaliação.");
             return;
         }
 
@@ -134,15 +136,18 @@ function iniciarAvaliacoes() {
 // ============================
 function iniciarScrollSuave() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const id = this.getAttribute('href');
-            if (id === '#') return;
-            
+        anchor.addEventListener("click", function (e) {
+            const id = this.getAttribute("href");
+
+            if (id === "#") return;
+
             const target = document.querySelector(id);
+
             if (target) {
                 e.preventDefault();
+
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: "smooth"
                 });
             }
         });
@@ -150,14 +155,13 @@ function iniciarScrollSuave() {
 }
 
 // ============================
-// INICIALIZAÇÃO ÚNICA
+// INIT
 // ============================
 document.addEventListener("DOMContentLoaded", () => {
     iniciarContadores();
     iniciarAvaliacoes();
     iniciarScrollSuave();
-    handleScrollEffects(); // Roda uma vez no load
+    handleScrollEffects();
 });
 
-// Listener de scroll unificado para melhor performance
 window.addEventListener("scroll", handleScrollEffects);
