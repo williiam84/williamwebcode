@@ -728,3 +728,68 @@ footer {
     margin-left: auto;
     margin-right: auto;
 }
+/* ===== REMOVE ROLAGEM LATERAL ===== */
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Evita elementos passando da tela */
+* {
+    max-width: 100%;
+}
+
+/* Corrige grids e imagens */
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Corrige hero */
+.hero {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Corrige cards */
+.service-card,
+.portfolio-card,
+.avaliacao-card,
+.stat-card {
+    min-width: 0;
+}
+
+/* Corrige botões largos */
+.hero-buttons a,
+.btn-primary,
+.btn-secondary,
+.btn-navbar {
+    max-width: 100%;
+}
+
+/* Corrige inputs */
+input,
+textarea {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Corrige navbar */
+.navbar {
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+/* Remove qualquer excesso causado por grids */
+.services-grid,
+.portfolio-grid,
+.avaliacoes-grid,
+.sobre-grid {
+    overflow: hidden;
+}
