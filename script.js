@@ -1,7 +1,4 @@
 
-# JavaScript Reescrito Completo — Organizado e Corrigido
-
-```javascript
 /* =========================
    MODAL
 ========================= */
